@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>evenNumbers test</title>
+	<script type="text/javascript" src="../vue/jquery.js"></script>
+	<script type="text/javascript" src="../vue/vue.js"></script>
+	<script type="text/javascript" src="evenNumber.js"></script>
+
+</head>
+<body>
+	<p>使用methods方法来过滤偶数：</p>
+	<div id="evenNumbers">
+		<ul>
+			<li v-for="n in even(numbers)">
+				{{ n }}
+			</li>
+		</ul>
+	</div>
+	<p>使用computed（计算属性）来过滤偶数：</p>
+	<div id="evenNumbersOther">
+		<ul>
+			<li v-for="n in evenNumbers">
+				{{ n }}
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

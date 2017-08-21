@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>todoList Test</title>
+
+	<script type="text/javascript" src="../vue/jquery.js"></script>
+	<script type="text/javascript" src="../vue/vue.js"></script>
+	<script type="text/javascript" src="todoList.js"></script>
+	<script type="text/javascript" src="component.js"></script>
+
+</head>
+<body>
+	<div id="todo-app">
+		<input v-model="newTodoText" placeholder="Add a todo" v-on:keyup.enter="AddNewTodo">
+		<ul>
+			<li
+				is="todo-item"
+				v-for="(todo, index) in todos" 
+				:title="todo" 
+				v-on:remove="todos.splice(index,1)">
+					
+			</li>						
+		</ul>
+	</div>
+</body>
+</html>

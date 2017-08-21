@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>todoMVC</title>
+
+	<link rel="stylesheet" type="text/css" href="todoMVC.css">
+
+	<script type="text/javascript" src="../vue/vue.js"></script>
+	<script type="text/javascript" src="../vue/jquery.js"></script>
+	<script type="text/javascript" src="todoMVC.js"></script>
+</head>
+<body>
+	<section class="todoapp">
+		<header class="header">
+		    <h1>todos</h1>
+		    <input class="new-todo"
+		      placeholder="What needs to be done?"
+		      v-model="newTodo"
+		      v-on:keyup.enter="addTodo">
+		</header>		
+		<section>
+			<ul class="todos">
+				<li v-for="todo in todos" v-bind:title="todo.text" >
+					<div class="view">
+			          <input type="checkbox" v-model="todo.done" v-on:click="checkTodo(todo)">
+			          <label v-on:dblclick="editTodo(todo)">{{ todo.text }}</label>
+			          <button v-on:click="removeTodo(todo)">X</button>
+			        </div>
+				</li>
+			</ul>
+		</section>
+		<footer class="footer" v-show="todos.length">
+		    <span class="todo-count">
+		      <strong>{{ remaining }}</strong> {{ remaining | pluralize }} left
+		    </span>
+		    <ul class="filters">
+		      <li><a href="#/all" :class="{ selected: visibility == 'all' }">All</a></li>
+		      <li><a href="#/active" :class="{ selected: visibility == 'active' }" v-on:click="activeTodos">Active</a></li>
+		      <li><a href="#/completed" :class="{ selected: visibility == 'completed' }" v-on:click="completeTodos">Completed</a></li>
+		    </ul>
+		    <button class="clear-completed" v-on:click="removeCompleted" v-show="todos.length > remaining">
+		      Clear completed
+		    </button>
+		</footer>
+	</section>
+</body>
+</html>

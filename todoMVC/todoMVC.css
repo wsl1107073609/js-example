@@ -1,0 +1,31 @@
+.todos li {
+	list-style: none;
+}
+
+.todo-true {
+	text-decoration: line-through;
+	color: #cccccc;
+}
+
+.todo-count {
+	float: left;
+}
+
+.filters {
+	float: left;
+	margin: 0px;
+}
+
+.filters li {
+	list-style: none;
+	float: left;
+	margin-right: 30px;
+}
+
+.filters li a {
+	text-decoration: none;
+}
+
+.selected {
+	border: 1px solid #ccc;
+}

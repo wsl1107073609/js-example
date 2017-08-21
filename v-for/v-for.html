@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>v-for test</title>
+	<script type="text/javascript" src="../vue/jquery.js"></script>
+	<script type="text/javascript" src="../vue/vue.js"></script>
+	<script type="text/javascript" src="v-for.js"></script>
+
+</head>
+<body>
+	<p>v-for只有一个参数的情况：</p>
+	<div id="example1">
+		<ul>
+			<li v-for="item in items">
+				{{ item.message }}
+			</li>
+		</ul>
+	</div>
+	<p>v-for有两个参数的情况：</p>
+	<div id="example2">
+		<ul>
+			<li v-for="(item, index) in items">
+				{{ parentMessage }} - {{ index }} - {{ item.message }}
+			</li>
+		</ul>
+	</div>
+	<p>v-for通过对象的属性值来迭代：</p>
+	<div>
+		<ul id="repeat-object" class="demo">
+			<li v-for="value in object">
+				{{ value }}
+			</li>
+		</ul>
+	</div>
+	<p>v-for第二个参数为键值：</p>
+	<div>
+		<ul id="repeat-object1">
+			<li v-for="(value, key) in object">
+				{{ key }} : {{ value }}
+			</li>
+		</ul>		
+	</div>
+	<p>v-for第三个参数为索引：</p>
+	<div>
+		<ul id="repeat-object2">
+			<li v-for="(value, key, index) of object">
+				{{ index }}.{{ key }} : {{ value }}
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>
