@@ -59,7 +59,7 @@ function testVar(){
 	if(true){
 		var n = 10;
 	}
-	document.write(n);
+	document.write(n+'<br>');
 }
 testVar();
 
@@ -115,3 +115,31 @@ for(let i=0;i<text.length;i++){
 for(let i of text){
 	console.log(i);
 }
+
+
+
+/**
+ES5:
+***/
+var arrayA = [1, 2, 3];
+var arrayB = arrayA.map(function(item){
+	return item * 2;
+});
+document.write(arrayB + '<br>');
+
+/**
+ES6
+***/
+var arrayC = [1, 2, 3];
+var arrayD = arrayC.map(item => item * 2);
+document.write(arrayD);
+
+/**
+do表达式
+**/
+// let returnT = do {
+// 	let t = f() {
+// 		t * t + 1;
+// 	}
+// };
+// document.write(returnT);
