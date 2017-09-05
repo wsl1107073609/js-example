@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>template test</title>
+</head>
+<body>
+	<div id="template">
+		
+	</div>
+	<script type="text/javascript">
+		var template = `
+						<ul>
+						  <% for(var i=0; i < data.supplies.length; i++) { %>
+						    <li><%= data.supplies[i] %></li>
+						  <% } %>
+						</ul>
+						`;	
+		var parse = eval(compile(template));
+		document.getElementById('template').innerHTML = parse({ supplies: ['broom', 'mop', 'cleaner']});
+
+		function compile(template){
+
+			  var evalExpr = /<%=(.+?)%>/g;
+			  var expr = /<%([\s\S]+?)%>/g;
+
+			  template = template
+			    .replace(evalExpr, '`); \n  echo( $1 ); \n  echo(`')
+			    .replace(expr, '`); \n $1 \n  echo(`');
+
+			  template = 'echo(`' + template + '`);';
+
+			  var script =
+			  `(function parse(data){
+			    var output = "";
+
+			    function echo(html){
+			      output += html;
+			    }
+
+			    ${ template }
+
+			    return output;
+			  })`;
+
+			  return script;
+
+		}
+	</script>
+</body>
+</html>

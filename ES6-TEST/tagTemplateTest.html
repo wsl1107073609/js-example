@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var total = 30;
+		var msg = passthru`The total is ${total} (${total * 1.05} with tax)`;
+
+		// function passthru(literals) {			
+		// 	var result = '';
+		// 	var i = 0;
+
+		// 	while(i < literals.length){
+		// 		result += literals[i++];
+		// 		if(i < arguments.length){
+		// 			result += arguments[i];
+		// 		}
+
+		// 	}
+
+		// 	return result;
+		// }
+
+		function passthru(literals, ...values) {
+			var output = '';
+			for(var index = 0; index < literals.length; index++) {
+				output += index < values.length ? literals[index] + values[index] : literals[index];				
+			}
+			return output
+		}
+
+		document.write(msg);
+	</script>
+</body>
+</html>
